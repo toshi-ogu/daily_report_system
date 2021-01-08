@@ -30,7 +30,6 @@ public class ReportsCreateServlet extends HttpServlet {
      */
     public ReportsCreateServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -43,12 +42,12 @@ public class ReportsCreateServlet extends HttpServlet {
 
             Report r = new Report();
 
-             r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+            r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+
             Date report_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("report_date");
             if(rd_str != null && !rd_str.equals("")) {
                 report_date = Date.valueOf(request.getParameter("report_date"));
-
             }
             r.setReport_date(report_date);
 
@@ -64,8 +63,8 @@ public class ReportsCreateServlet extends HttpServlet {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("report",r);
-                request.setAttribute("errors",errors);
+                request.setAttribute("report", r);
+                request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
                 rd.forward(request, response);
@@ -74,13 +73,13 @@ public class ReportsCreateServlet extends HttpServlet {
                 em.persist(r);
                 em.getTransaction().commit();
                 em.close();
-                request.getSession().setAttribute("flush", "登録が完了しました");
+                request.getSession().setAttribute("flush", "登録が完了しました。");
 
                 response.sendRedirect(request.getContextPath() + "/reports/index");
             }
         }
-
-        // TODO Auto-generated method stub
     }
 
 }
+
+

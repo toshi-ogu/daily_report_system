@@ -1,3 +1,4 @@
+
 package controllers.login;
 
 import java.io.IOException;
@@ -20,7 +21,6 @@ public class LogoutServlet extends HttpServlet {
      */
     public LogoutServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -29,11 +29,10 @@ public class LogoutServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getSession().removeAttribute("longin_employee");
+        request.getSession().removeAttribute("login_employee");
 
-        request.getSession().setAttribute("flush", "ログアウトしました");
+        request.getSession().setAttribute("flush", "ログアウトしました。");
         response.sendRedirect(request.getContextPath() + "/login");
-
     }
 
 }

@@ -13,18 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import models.Report;
 
 /**
- * Servlet implementation class ReportNewServlet
+ * Servlet implementation class ReportsNewServlet
  */
 @WebServlet("/reports/new")
-public class ReportNewServlet extends HttpServlet {
+public class ReportsNewServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReportNewServlet() {
+    public ReportsNewServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -35,7 +34,7 @@ public class ReportNewServlet extends HttpServlet {
 
         Report r = new Report();
         r.setReport_date(new Date(System.currentTimeMillis()));
-        request.setAttribute("repoert", r);
+        request.setAttribute("report", r);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/reports/new.jsp");
         rd.forward(request, response);
